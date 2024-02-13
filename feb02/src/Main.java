@@ -16,15 +16,20 @@ public class Main {
 
             Properties authorization = new Properties();
             authorization.put("user", "postgres");
-            authorization.put("password", "1224"); 
+            authorization.put("password", "1224");
 
 
             Connection connection = DriverManager.getConnection(url, authorization);
 
             String sql = "INSERT INTO orders (customer_name, customer_surname, email, name, price)" +
                     " VALUES ('John', 'Andersen', 'john0101@example.com', 'AirPods', 2106000)";
+            String sql1 = "UPDATE orders SET email = 'akjdejkde@example.com' WHERE order_id = 4;";
+            String sql2 = "DELETE FROM orders WHERE order_id = 2";
+
             Statement statement2 = connection.createStatement();
             statement2.executeUpdate(sql);
+            statement2.executeUpdate(sql1);
+            statement2.executeUpdate(sql2);
 
 
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
